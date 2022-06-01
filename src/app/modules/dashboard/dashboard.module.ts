@@ -8,16 +8,9 @@ import { CurrentlyReadingComponent } from './currently-reading/currently-reading
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { RecentlyReadComponent } from './recently-read/recently-read.component';
-import { SearchBooksComponent } from './search-books/search-books.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, FormsModule, MaterialModule, DashboardRoutingModule],
-  declarations: [
-    DashboardComponent,
-    BookShelfComponent,
-    SearchBooksComponent,
-    CurrentlyReadingComponent,
-    RecentlyReadComponent,
-  ],
+  declarations: [DashboardComponent, BookShelfComponent, CurrentlyReadingComponent, RecentlyReadComponent],
 })
 export class DashboardModule {}

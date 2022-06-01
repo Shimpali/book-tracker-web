@@ -18,7 +18,6 @@ import { ShellModule } from './shell/shell.module';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     RouterModule,
     TranslateModule.forRoot(),

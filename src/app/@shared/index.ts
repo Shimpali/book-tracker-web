@@ -2,7 +2,7 @@ export * from '@ngneat/until-destroy';
 // Directives
 // Pipes
 // Components
-export { LoaderComponent } from './loader/loader.component';
+export { LoaderComponent } from './components/loader/loader.component';
 // Fixtures
 // Models
 export { CrudOperations } from './models/crud-operations';
