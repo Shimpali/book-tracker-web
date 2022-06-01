@@ -33,14 +33,19 @@
             <span translate>Dashboard</span>
           </a>
           <mat-divider></mat-divider>
-          <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink="/books" routerLinkActive="active" (click)="isMobile && sidenav.close()">
+            <span translate>Books</span>
+          </a>
+          <mat-divider></mat-divider>
+          <!-- <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="isMobile && sidenav.close()">
             <span translate>Home</span>
           </a>
           <mat-divider></mat-divider>
           <a mat-list-item routerLink="/about" routerLinkActive="active" (click)="isMobile && sidenav.close()">
             <span translate>About</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider></mat-divider> -->
         </mat-list>
       </nav>
     </mat-sidenav>

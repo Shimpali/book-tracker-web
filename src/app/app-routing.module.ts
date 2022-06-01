@@ -12,7 +12,12 @@ const routes: Routes = [
       path: 'dashboard',
       loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
     },
+    {
+      path: 'books',
+      loadChildren: () => import('./modules/books/books.module').then((m) => m.BooksModule),
+    },
   ]),
+
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

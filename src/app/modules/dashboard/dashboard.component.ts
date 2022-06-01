@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { debounceTime, map } from 'rxjs';
+
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,29 +23,26 @@ export class DashboardComponent implements OnInit {
       title: 'Total Orders',
     },
   ];
-  search: FormControl = new FormControl(null);
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit(): void {
-    this.search.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
-      console.log(value);
-    });
-  }
+  ngOnInit(): void {}
 
   setLayout(matches: boolean) {
     if (matches) {
       return {
         columns: 1,
         miniCard: { cols: 1, rows: 1 },
+        wantToRead: { cols: 1, rows: 2 },
         graph: { cols: 1, rows: 2 },
         table: { cols: 1, rows: 2 },
       };
     }
 
     return {
-      columns: 4,
+      columns: 3,
       miniCard: { cols: 1, rows: 1 },
+      wantToRead: { cols: 3, rows: 2 },
       graph: { cols: 3, rows: 2 },
       table: { cols: 3, rows: 2 },
     };

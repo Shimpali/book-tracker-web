@@ -1,8 +1,4 @@
 <div class="dashboard-container">
-  <div class="search-container">
-    <app-search-input [formControl]="search"></app-search-input>
-  </div>
-
   <div class="grid-container">
     <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="140px" gutterSize="40px">
       <mat-grid-tile
@@ -11,6 +7,12 @@
         [rowspan]="(cardLayout | async)?.miniCard?.rows"
       >
         <app-book-shelf></app-book-shelf>
+      </mat-grid-tile>
+      <mat-grid-tile
+        [colspan]="(cardLayout | async)?.wantToRead?.cols"
+        [rowspan]="(cardLayout | async)?.wantToRead?.rows"
+      >
+        <app-want-to-read></app-want-to-read>
       </mat-grid-tile>
       <mat-grid-tile [colspan]="(cardLayout | async)?.graph?.cols" [rowspan]="(cardLayout | async)?.graph?.rows">
         <app-currently-reading></app-currently-reading>
