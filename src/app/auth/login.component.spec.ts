@@ -13,23 +13,21 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          BrowserAnimationsModule,
-          FlexLayoutModule,
-          MaterialModule,
-          SharedModule,
-          RouterTestingModule,
-          TranslateModule.forRoot(),
-          I18nModule,
-          ReactiveFormsModule,
-        ],
-        declarations: [LoginComponent],
-      }).compileComponents();
-    })
-  );
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        MaterialModule,
+        SharedModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        I18nModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [LoginComponent],
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
