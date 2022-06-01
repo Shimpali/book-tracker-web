@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Logger } from '@app/@core';
+import { UntilDestroy, untilDestroyed } from '@shared';
 import { finalize } from 'rxjs/operators';
-
-import { environment } from '@env/environment';
-import { Logger, UntilDestroy, untilDestroyed } from '@shared';
 import { AuthenticationService } from './authentication.service';
 
 const log = new Logger('Login');
@@ -16,7 +15,6 @@ const log = new Logger('Login');
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  version: string | null = environment.version;
   error: string | undefined;
   loginForm!: FormGroup;
   isLoading = false;

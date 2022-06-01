@@ -32,17 +32,17 @@ describe('ApiPrefixInterceptor', () => {
 
   it('should prepend environment.serverUrl to the request url', () => {
     // Act
-    http.get('/toto').subscribe();
+    http.get('/todo').subscribe();
 
     // Assert
-    httpMock.expectOne({ url: environment.serverUrl + '/toto' });
+    httpMock.expectOne({ url: `${environment.serverUrl}/todo` });
   });
 
   it('should not prepend environment.serverUrl to request url', () => {
     // Act
-    http.get('hTtPs://domain.com/toto').subscribe();
+    http.get('hTtPs://domain.com/todo').subscribe();
 
     // Assert
-    httpMock.expectOne({ url: 'hTtPs://domain.com/toto' });
+    httpMock.expectOne({ url: 'hTtPs://domain.com/todo' });
   });
 });

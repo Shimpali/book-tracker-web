@@ -10,10 +10,10 @@ describe('ErrorHandlerInterceptor', () => {
   let http: HttpClient;
   let httpMock: HttpTestingController;
 
-  function createInterceptor() {
+  const createInterceptor = () => {
     errorHandlerInterceptor = new ErrorHandlerInterceptor();
     return errorHandlerInterceptor;
-  }
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -39,7 +39,7 @@ describe('ErrorHandlerInterceptor', () => {
     // Arrange
     // Note: here we spy on private method since target is customization here,
     // but you should replace it by actual behavior in your app
-    jest.spyOn(ErrorHandlerInterceptor.prototype as any, 'errorHandler');
+    spyOn(ErrorHandlerInterceptor.prototype as any, 'errorHandler').and.callThrough();
 
     // Act
     http.get('/toto').subscribe(

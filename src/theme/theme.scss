@@ -2,6 +2,36 @@
  * Global application theme.
  * Framework overrides and customization goes here.
  */
+@import '~@angular/material/theming';
+@import './colors.scss';
+
+//  Typography
+$book-tracker-typography: mat-typography-config(
+  $font-family: 'Helvetica Neue, Helvetica, Arial',
+  $headline: mat-typography-level(16px, 16px, 500),
+  $title: mat-typography-level(16px, 16px, 500),
+  $subheading-1: mat-typography-level(5px, 5px, 500),
+);
+
+.book-tracker-card-title {
+  font-size: mat-font-size($book-tracker-typography, title);
+  font-family: mat-font-family($book-tracker-typography);
+}
+
+@include mat-core($book-tracker-typography);
+
+//  Primary Theme
+$book-tracker-primary: mat-palette($book-tracker-primary-color);
+$book-tracker-accent: mat-palette($book-tracker-accent-color);
+$book-tracker-warn: mat-palette($book-tracker-warn-color);
+
+$book-tracker-theme: mat-light-theme($book-tracker-primary, $book-tracker-accent, $book-tracker-warn);
+
+$primary: mat-color($book-tracker-primary);
+$accent: mat-color($book-tracker-accent);
+$warn: mat-color($book-tracker-warn);
+
+@include angular-material-theme($book-tracker-theme);
 
 // stylelint-disable-next-line selector-max-universal
 * {

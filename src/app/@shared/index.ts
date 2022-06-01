@@ -1,7 +1,13 @@
-export * from './shared.module';
-export * from './http/api-prefix.interceptor';
-export * from './http/error-handler.interceptor';
-export * from './loader/loader.component';
-export * from './route-reusable-strategy';
-export * from './logger.service';
 export * from '@ngneat/until-destroy';
+// Directives
+// Pipes
+// Components
+export { LoaderComponent } from './loader/loader.component';
+// Fixtures
+// Models
+export { CrudOperations } from './models/crud-operations';
+// Services
+export { ResourceService } from './services/resource.service';
+export { SharedModule } from './shared.module';
+
+// Utils

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-shadow */
 /**
  * Simple logger system with the possibility of registering custom outputs.
  *
@@ -59,6 +61,8 @@ export class Logger {
    */
   static outputs: LogOutput[] = [];
 
+  constructor(private source?: string) {}
+
   /**
    * Enables production mode.
    * Sets logging level to LogLevel.Warning.
@@ -66,8 +70,6 @@ export class Logger {
   static enableProductionMode() {
     Logger.level = LogLevel.Warning;
   }
-
-  constructor(private source?: string) {}
 
   /**
    * Logs messages or objects  with the debug level.
@@ -82,6 +84,7 @@ export class Logger {
    * Works the same as console.log().
    */
   info(...objects: any[]) {
+    // eslint-disable-next-line no-console
     this.log(console.info, LogLevel.Info, objects);
   }
 
@@ -103,7 +106,7 @@ export class Logger {
 
   private log(func: (...args: any[]) => void, level: LogLevel, objects: any[]) {
     if (level <= Logger.level) {
-      const log = this.source ? ['[' + this.source + ']'].concat(objects) : objects;
+      const log = this.source ? [`[${this.source}]`].concat(objects) : objects;
       func.apply(console, log);
       Logger.outputs.forEach((output) => output.apply(output, [this.source, level, ...objects]));
     }

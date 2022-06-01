@@ -19,11 +19,11 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(catchError((error) => this.errorHandler(error)));
   }
 
-  // Customize the default error handler here if needed
+  // TODO: Customize the default error handler here
   private errorHandler(response: HttpEvent<any>): Observable<HttpEvent<any>> {
     if (!environment.production) {
       // Do something with the error
-      log.error('Request error', response);
+      log.error('Request error: ', response);
     }
     throw response;
   }

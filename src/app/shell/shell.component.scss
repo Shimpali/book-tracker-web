@@ -1,29 +1,45 @@
+@import '../../theme/theme-variables';
+
 :host {
   display: flex;
   flex: 1;
+  height: 100%;
 }
 
-.mat-sidenav {
-  min-width: 270px;
-  max-width: 28%;
-}
-
-.has-border {
-  border-right: 1px solid rgb(0 0 0 / 12%);
-}
-
-.mat-list {
-  padding-top: 0;
-}
-
-.mat-list-item {
-  text-decoration: none;
-
-  &:hover {
-    background: rgb(0 0 0 / 5%);
+.shell-container {
+  .mat-sidenav {
+    min-width: 270px;
+    max-width: 28%;
   }
-}
 
-.menu-button {
-  margin-right: 1rem;
+  mat-sidenav {
+    background-color: mat-color($app-primary);
+    span {
+      color: mat-color($app-primary, 50);
+    }
+  }
+
+  mat-sidenav-content {
+    background: linear-gradient(to left, mat-color($app-primary), mat-color($app-accent)) !important;
+  }
+
+  .has-border {
+    border-right: 1px solid rgb(0 0 0 / 12%);
+  }
+
+  .mat-list {
+    padding-top: 0;
+  }
+
+  .mat-list-item {
+    text-decoration: none;
+
+    &:hover {
+      background: rgb(0 0 0 / 5%);
+    }
+  }
+
+  .menu-button {
+    margin-right: 1rem;
+  }
 }

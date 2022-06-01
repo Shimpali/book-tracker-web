@@ -1,0 +1,14 @@
+@import '../../../../theme/theme-variables';
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: mat-color($app-primary, 100) !important;
+}
