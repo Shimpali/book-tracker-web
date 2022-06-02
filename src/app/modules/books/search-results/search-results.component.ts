@@ -45,7 +45,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
       .pipe(
         map(() => this.virtualScroll?.measureScrollOffset('bottom')),
         pairwise(), // Get scroll offset in pairs, so that we can see whether it is increasing or decreasing
-        filter(([y1, y2]) => y2 < y1 && y2 < 160), //  Allow to continue only when the offset is near to the bottom
+        filter(([y1, y2]) => y2 < y1 && y2 < 60), //  Allow to continue only when the offset is near to the bottom
         throttleTime(200), // Throttle so that we don’t get repeated scroll events and just one in 200 ms
         untilDestroyed(this)
       )

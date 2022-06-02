@@ -1,3 +1,5 @@
+@import 'src/theme/theme-variables';
+
 .search-results-container {
   width: 100%;
   height: 100%;
@@ -23,4 +25,12 @@
 .empty-screen-container {
   width: 100%;
   height: 100%;
+}
+
+::ng-deep .actions-menu {
+  background-color: mat-color($app-primary, 200);
+}
+
+.menu-item {
+  color: mat-color($app-accent, 900);
 }
