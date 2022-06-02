@@ -18,6 +18,11 @@ $book-tracker-typography: mat-typography-config(
   font-family: mat-font-family($book-tracker-typography);
 }
 
+.empty-screen-container {
+  font-size: mat-font-size($book-tracker-typography, headline);
+  font-family: mat-font-family($book-tracker-typography);
+}
+
 @include mat-core($book-tracker-typography);
 
 //  Primary Theme

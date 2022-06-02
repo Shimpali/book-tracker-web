@@ -1,9 +1,9 @@
-<div class="books-container">
-  <div class="search-input">
+<div class="books-container" fxLayout="column" fxLayoutAlign="center start" fxFill>
+  <div class="search-input" fxFlex="10">
     <app-search-input [formControl]="search"></app-search-input>
   </div>
 
-  <div class="search-results">
+  <div class="search-results" fxFlex="90">
     <app-search-results
       [isLoading]="isLoading"
       [books]="books"
