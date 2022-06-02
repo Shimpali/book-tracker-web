@@ -1,5 +1,6 @@
 <mat-form-field appearance="fill">
   <mat-label>Search Books</mat-label>
+  <mat-icon matPrefix>search</mat-icon>
   <input type="text" matInput placeholder="" [(ngModel)]="value" (ngModelChange)="onInputChange($event)" />
   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = null">
     <mat-icon>close</mat-icon>
