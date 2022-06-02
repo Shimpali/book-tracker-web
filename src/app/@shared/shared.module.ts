@@ -8,11 +8,14 @@ import { MaterialModule } from '@material';
 import { TranslateModule } from '@ngx-translate/core';
 
 // Components
-import { LoaderComponent, SearchInputComponent } from './components';
+import { LoaderComponent } from './components';
+
+// Pipes
+import { TruncatePipe } from './pipes';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, MaterialModule, TranslateModule],
-  declarations: [LoaderComponent, SearchInputComponent],
+  declarations: [LoaderComponent, TruncatePipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -21,7 +24,8 @@ import { LoaderComponent, SearchInputComponent } from './components';
     MaterialModule,
     TranslateModule,
     LoaderComponent,
-    SearchInputComponent,
+
+    TruncatePipe,
   ],
 })
 export class SharedModule {}

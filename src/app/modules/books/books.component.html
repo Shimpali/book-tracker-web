@@ -1,5 +1,13 @@
 <div class="books-container">
-  <div class="search-container">
+  <div class="search-input">
     <app-search-input [formControl]="search"></app-search-input>
+  </div>
+
+  <div class="search-results">
+    <app-search-results
+      [isLoading]="isLoading"
+      [books]="books"
+      (loadNextBatch)="loadNextBatch($event)"
+    ></app-search-results>
   </div>
 </div>

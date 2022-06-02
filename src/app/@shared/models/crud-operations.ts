@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
+import { APIResponse } from './api-response';
 
 export interface CrudOperations<T, ID> {
-  get(id: ID): Observable<T>;
-  getAll(): Observable<T[]>;
-  save(data: T): Observable<T>;
-  update(id: ID, updates: Partial<T>): Observable<T>;
-  delete(id: ID): Observable<string>;
+  get(): Observable<APIResponse>;
+  getById(id: ID, endpoint?: string): Observable<APIResponse>;
+  save(data: T, endpoint?: string): Observable<APIResponse>;
+  updateById(id: ID, updates: Partial<T>, endpoint?: string): Observable<APIResponse>;
+  delete(id: ID, endpoint?: string): Observable<APIResponse>;
 }

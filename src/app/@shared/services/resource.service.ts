@@ -1,19 +1,21 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { isNull, omitBy } from 'lodash';
 import { Observable } from 'rxjs';
 
-import { CrudOperations } from '../models';
+import { APIResponse, CrudOperations } from '../models';
 
 /**
  * A base service to handle HTTP methods using HttpClient.
  */
-@Injectable({
-  providedIn: 'root',
-})
 export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
-  constructor(private http: HttpClient, @Inject(String) private endpoint: string) {
-    console.log(this.http);
-    console.log(this.endpoint);
+  constructor(protected http: HttpClient, protected baseUrl: string) {}
+
+  setParams(paramsObject: any): HttpParams {
+    return new HttpParams({
+      fromObject: {
+        ...omitBy(paramsObject, isNull),
+      },
+    });
   }
 
   /**
@@ -22,8 +24,10 @@ export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
    * @param params HttpParams
    * @returns An observable with array of data objects
    */
-  getAll(params?: HttpParams): Observable<T[]> {
-    return this.http.get<T[]>(this.endpoint, { params });
+  get(endpoint?: string, paramsObject?: unknown): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    const params = this.setParams(paramsObject);
+    return this.http.get<APIResponse>(url, { params });
   }
 
   /**
@@ -32,8 +36,14 @@ export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
    * @param id Object Id to retrieve data
    * @returns An observable with data object
    */
-  get(id: ID): Observable<T> {
-    return this.http.get<T>(`${this.endpoint}/${id}`);
+  getById(id: ID, endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    return this.http.get<APIResponse>(`${url}/${id}`);
+  }
+
+  getObject(endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    return this.http.get<APIResponse>(url);
   }
 
   /**
@@ -42,8 +52,9 @@ export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
    * @param data POST method body
    * @returns An observable with the newly created data object
    */
-  save(data: T): Observable<T> {
-    return this.http.post<T>(this.endpoint, data);
+  save(data: T, endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    return this.http.post<APIResponse>(url, data);
   }
 
   /**
@@ -52,8 +63,14 @@ export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
    * @param updates An object consisting few or all fields in the data model to be updated
    * @returns An observable with the updated data object
    */
-  update(id: ID, updates: Partial<T>): Observable<T> {
-    return this.http.put<T>(`${this.endpoint}/${id}`, { ...updates });
+  update(updates: Partial<T>, endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    return this.http.patch<APIResponse>(url, { ...updates });
+  }
+
+  updateById(id: ID, updates: Partial<T>, endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${id}/${endpoint}` : `${this.baseUrl}/${id}`;
+    return this.http.patch<APIResponse>(url, { ...updates });
   }
 
   /**
@@ -62,7 +79,8 @@ export abstract class ResourceService<T, ID> implements CrudOperations<T, ID> {
    * @param id Id of the object to be deleted
    * @returns An observable with a message confirming the deletion
    */
-  delete(id: ID): Observable<string> {
-    return this.http.delete<string>(`${this.endpoint}/${id}`);
+  delete(id: ID, endpoint?: string): Observable<APIResponse> {
+    const url = endpoint ? `${this.baseUrl}/${endpoint}` : this.baseUrl;
+    return this.http.delete<APIResponse>(`${url}/${id}`);
   }
 }
