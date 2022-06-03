@@ -4,9 +4,10 @@ export interface GoogleBook {
   etag: string;
   selfLink: string;
   volumeInfo: VolumeInfo;
+  layerInfo: LayerInfo;
   saleInfo: SaleInfo;
   accessInfo: AccessInfo;
-  searchInfo: SearchInfo;
+  searchInfo?: SearchInfo;
 }
 
 export interface AccessInfo {
@@ -42,6 +43,15 @@ export interface SaleInfoListPrice {
   currencyCode: string;
 }
 
+export interface LayerInfo {
+  layers: Layer[];
+}
+
+export interface Layer {
+  layerId: string;
+  volumeAnnotationsVersion: string;
+}
+
 export interface Offer {
   finskyOfferType: number;
   listPrice: OfferListPrice;
@@ -66,6 +76,7 @@ export interface VolumeInfo {
   industryIdentifiers: IndustryIdentifier[];
   readingModes: ReadingModes;
   pageCount: number;
+  printedPageCount: number;
   printType: string;
   categories: string[];
   averageRating?: number;
@@ -86,6 +97,10 @@ export interface VolumeInfo {
 export interface ImageLinks {
   smallThumbnail: string;
   thumbnail: string;
+  small: string;
+  medium: string;
+  large: string;
+  extraLarge: string;
 }
 
 export interface IndustryIdentifier {

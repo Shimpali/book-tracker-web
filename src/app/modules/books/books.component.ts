@@ -15,7 +15,7 @@ import { GoogleBooksService } from './google-books.service';
 })
 export class BooksComponent implements OnInit {
   books: GoogleBook[] = [];
-  search: FormControl = new FormControl(null);
+  search: FormControl = new FormControl<string | null>(null);
   apiQueryParams = {
     q: null,
     startIndex: 0,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger } from '@app/@core';
 import { UntilDestroy, untilDestroyed } from '@shared';
@@ -16,13 +16,13 @@ const log = new Logger('Login');
 })
 export class LoginComponent implements OnInit {
   error: string | undefined;
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   isLoading = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authenticationService: AuthenticationService
   ) {
     this.createForm();

@@ -6,7 +6,7 @@
           <img
             class="book-cover"
             matListAvatar
-            [src]="book?.volumeInfo?.imageLinks?.thumbnail"
+            [src]="book?.volumeInfo?.imageLinks?.smallThumbnail"
             alt="{{ book?.volumeInfo?.title }}"
           />
           <h3 matLine>{{ book?.volumeInfo?.title }}</h3>
@@ -16,7 +16,7 @@
           <p matLine *ngIf="book.volumeInfo.authors">
             {{ book.volumeInfo.authors }}
           </p>
-          <button mat-icon-button [matMenuTriggerFor]="itemMenu">
+          <button mat-icon-button [matMenuTriggerFor]="itemMenu" [matMenuTriggerData]="{ volumeId: book?.id }">
             <mat-icon> more_vert </mat-icon>
           </button>
           <mat-divider></mat-divider>
@@ -30,7 +30,9 @@
 </div>
 
 <mat-menu #itemMenu="matMenu" class="actions-menu">
-  <button mat-menu-item class="menu-item">View</button>
+  <ng-template matMenuContent let-volumeId="volumeId">
+    <button mat-menu-item class="menu-item" [routerLink]="[volumeId]">View</button>
+  </ng-template>
   <mat-divider class="menu-item"></mat-divider>
   <button mat-menu-item class="menu-item">Want To Read</button>
   <mat-divider class="menu-item"></mat-divider>

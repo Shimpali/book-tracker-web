@@ -13,6 +13,12 @@
     max-width: 28%;
   }
 
+  .toolbar {
+    top: 0;
+    position: sticky;
+    z-index: 1000;
+  }
+
   mat-sidenav {
     background-color: mat-color($app-primary);
     span {

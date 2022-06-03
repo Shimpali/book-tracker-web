@@ -11,11 +11,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoaderComponent } from './components';
 
 // Pipes
-import { TruncatePipe } from './pipes';
+import { SafeHtmlPipe, TruncatePipe } from './pipes';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, MaterialModule, TranslateModule],
-  declarations: [LoaderComponent, TruncatePipe],
+  declarations: [LoaderComponent, TruncatePipe, SafeHtmlPipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -24,8 +24,8 @@ import { TruncatePipe } from './pipes';
     MaterialModule,
     TranslateModule,
     LoaderComponent,
-
     TruncatePipe,
+    SafeHtmlPipe,
   ],
 })
 export class SharedModule {}
