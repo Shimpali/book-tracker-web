@@ -13,6 +13,38 @@
       border-radius: 0;
       object-fit: contain;
     }
+
+    .book {
+      &-title {
+        font-weight: bold;
+      }
+
+      &-link {
+        color: mat-color($app-accent, 900);
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      &-subtitle {
+        margin: 4px 0 !important;
+        color: mat-color($app-primary, 600);
+      }
+
+      &-authors {
+        margin: 2px 0;
+        color: mat-color($app-primary, 400);
+      }
+
+      &-rating {
+        margin: 2px 0;
+        display: flex;
+        color: mat-color($app-accent, 500);
+
+        .star-icon {
+          margin-top: 1px;
+        }
+      }
+    }
   }
 }
 
@@ -33,4 +65,10 @@
 
 .menu-item {
   color: mat-color($app-accent, 900);
+
+  .book-link {
+    color: mat-color($app-accent, 900);
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
