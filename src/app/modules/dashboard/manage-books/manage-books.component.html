@@ -1,8 +1,21 @@
-<mat-card class="dashboard-card">
-  <mat-card-header class="card-header">
-    <mat-card-title> currently-reading</mat-card-title>
-    <div mat-card-avatar class="card-icon">
-      <!-- <mat-icon [color]="color" class="avatar-icon">{{icon}}</mat-icon> -->
-    </div>
-  </mat-card-header>
+<mat-card class="mat-elevation-z8 dashboard-card">
+  <mat-tab-group>
+    <mat-tab label="Currently Reading">
+      <ng-template matTabContent *ngTemplateOutlet="booksList; context: { label: 'Currently Reading' }"></ng-template>
+    </mat-tab>
+    <mat-tab label="Want To Read">
+      <ng-template matTabContent *ngTemplateOutlet="booksList; context: { label: 'Want To Read' }"></ng-template>
+    </mat-tab>
+    <mat-tab label="Read">
+      <ng-template matTabContent *ngTemplateOutlet="booksList; context: { label: 'Read' }"></ng-template>
+    </mat-tab>
+  </mat-tab-group>
 </mat-card>
+
+<ng-template #booksList #optionTemplate let-label="label">
+  {{ label }}
+  <mat-list>
+    <mat-list-item>list item 1</mat-list-item>
+    <mat-list-item>list item 2</mat-list-item>
+  </mat-list>
+</ng-template>
