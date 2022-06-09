@@ -2,7 +2,7 @@
   <div class="grid-container">
     <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="fit" gutterSize="20px" class="grid-list">
       <mat-grid-tile
-        *ngFor="let mc of miniCardData; let i = index"
+        *ngFor="let option of Status | enumToArray; let i = index; ngForTrackByProperty"
         [colspan]="(cardLayout | async)?.miniCard?.cols"
         [rowspan]="(cardLayout | async)?.miniCard?.rows"
       >

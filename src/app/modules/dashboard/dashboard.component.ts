@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { Status } from '@shared/enums';
 
 import { map } from 'rxjs';
 
@@ -12,20 +13,7 @@ export class DashboardComponent implements OnInit {
   cardLayout = this.breakpointObserver
     .observe([Breakpoints.Handset, Breakpoints.Tablet])
     .pipe(map(({ matches }) => this.setLayout(matches)));
-  miniCardData = [
-    {
-      title: 'Total Sales',
-    },
-    {
-      title: 'Average Order Value',
-    },
-    {
-      title: 'Total Orders',
-    },
-    {
-      title: 'Total Orders',
-    },
-  ];
+  Status = Status;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 

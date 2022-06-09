@@ -10,12 +10,22 @@ import { TranslateModule } from '@ngx-translate/core';
 // Components
 import { LoaderComponent } from './components';
 
+// Directives
+import { HideTemplateDirective, NgForTrackByPropertyDirective } from './directives';
+
 // Pipes
-import { ArrayJoinPipe, TruncatePipe } from './pipes';
+import { ArrayJoinPipe, EnumToArrayPipe, TruncatePipe } from './pipes';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, MaterialModule, TranslateModule],
-  declarations: [LoaderComponent, TruncatePipe, ArrayJoinPipe],
+  declarations: [
+    LoaderComponent,
+    HideTemplateDirective,
+    NgForTrackByPropertyDirective,
+    TruncatePipe,
+    ArrayJoinPipe,
+    EnumToArrayPipe,
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -24,8 +34,11 @@ import { ArrayJoinPipe, TruncatePipe } from './pipes';
     MaterialModule,
     TranslateModule,
     LoaderComponent,
+    HideTemplateDirective,
+    NgForTrackByPropertyDirective,
     TruncatePipe,
     ArrayJoinPipe,
+    EnumToArrayPipe,
   ],
 })
 export class SharedModule {}
