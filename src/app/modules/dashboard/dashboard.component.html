@@ -1,24 +1,16 @@
 <div class="dashboard-container">
   <div class="grid-container">
-    <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="140px" gutterSize="40px">
+    <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="fit" gutterSize="20px" class="grid-list">
       <mat-grid-tile
         *ngFor="let mc of miniCardData; let i = index"
         [colspan]="(cardLayout | async)?.miniCard?.cols"
         [rowspan]="(cardLayout | async)?.miniCard?.rows"
       >
-        <app-book-shelf></app-book-shelf>
+        <app-book-count-by-status></app-book-count-by-status>
       </mat-grid-tile>
-      <mat-grid-tile
-        [colspan]="(cardLayout | async)?.wantToRead?.cols"
-        [rowspan]="(cardLayout | async)?.wantToRead?.rows"
-      >
-        <app-want-to-read></app-want-to-read>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="(cardLayout | async)?.graph?.cols" [rowspan]="(cardLayout | async)?.graph?.rows">
-        <app-currently-reading></app-currently-reading>
-      </mat-grid-tile>
+
       <mat-grid-tile [colspan]="(cardLayout | async)?.table?.cols" [rowspan]="(cardLayout | async)?.table?.rows">
-        <app-recently-read></app-recently-read>
+        <app-manage-books></app-manage-books>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

@@ -3,20 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { WantToReadComponent } from './want-to-read.component';
+import { BookCountByStatusComponent } from './book-count-by-status.component';
 
-describe('WantToReadComponent', () => {
-  let component: WantToReadComponent;
-  let fixture: ComponentFixture<WantToReadComponent>;
+describe('BookCountByStatusComponent', () => {
+  let component: BookCountByStatusComponent;
+  let fixture: ComponentFixture<BookCountByStatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WantToReadComponent],
+      declarations: [BookCountByStatusComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WantToReadComponent);
+    fixture = TestBed.createComponent(BookCountByStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,20 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RecentlyReadComponent } from './recently-read.component';
+import { ManageBooksComponent } from './manage-books.component';
 
-describe('RecentlyReadComponent', () => {
-  let component: RecentlyReadComponent;
-  let fixture: ComponentFixture<RecentlyReadComponent>;
+describe('ManageBooksComponent', () => {
+  let component: ManageBooksComponent;
+  let fixture: ComponentFixture<ManageBooksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RecentlyReadComponent],
+      declarations: [ManageBooksComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecentlyReadComponent);
+    fixture = TestBed.createComponent(ManageBooksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

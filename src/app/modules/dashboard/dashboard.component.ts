@@ -22,6 +22,9 @@ export class DashboardComponent implements OnInit {
     {
       title: 'Total Orders',
     },
+    {
+      title: 'Total Orders',
+    },
   ];
 
   constructor(private breakpointObserver: BreakpointObserver) {}
@@ -31,20 +34,16 @@ export class DashboardComponent implements OnInit {
   setLayout(matches: boolean) {
     if (matches) {
       return {
-        columns: 1,
+        columns: 2,
         miniCard: { cols: 1, rows: 1 },
-        wantToRead: { cols: 1, rows: 2 },
-        graph: { cols: 1, rows: 2 },
-        table: { cols: 1, rows: 2 },
+        table: { cols: 2, rows: 3 },
       };
     }
 
     return {
-      columns: 3,
+      columns: 4,
       miniCard: { cols: 1, rows: 1 },
-      wantToRead: { cols: 3, rows: 2 },
-      graph: { cols: 3, rows: 2 },
-      table: { cols: 3, rows: 2 },
+      table: { cols: 4, rows: 4 },
     };
   }
 }
