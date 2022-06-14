@@ -1,5 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { isNull, omitBy } from 'lodash';
+import isNull from 'lodash-es/isNull';
+import omitBy from 'lodash-es/omitBy';
+
 import { Observable } from 'rxjs';
 
 import { APIResponse, CrudOperations } from '../models';
