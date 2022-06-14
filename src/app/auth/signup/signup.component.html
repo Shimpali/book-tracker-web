@@ -1,0 +1,65 @@
+<form (ngSubmit)="login()" [formGroup]="signupForm" novalidate>
+  <div class="signup-error" [hidden]="!error || isLoading" translate>Username or password incorrect.</div>
+  <br />
+  <div class="signup-fields" fxLayout="column">
+    <mat-form-field [hideRequiredMarker]="true">
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        autocomplete="username"
+        [placeholder]="'Username' | translate"
+        required
+      />
+      <mat-error *ngIf="invalid('username') && touched('username')">
+        <span translate>Username is required</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field [hideRequiredMarker]="true">
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        autocomplete="email"
+        [placeholder]="'Email' | translate"
+        required
+      />
+      <mat-error *ngIf="invalid('email') && touched('email')">
+        <span translate>Email is required</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="true">
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        autocomplete="current-password"
+        [placeholder]="'Password' | translate"
+        required
+      />
+      <mat-error *ngIf="invalid('password') && touched('password')">
+        <span translate>Password is required</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field [hideRequiredMarker]="true">
+      <input
+        type="password"
+        matInput
+        formControlName="passwordConfirm"
+        autocomplete="confirm-password"
+        [placeholder]="'Confirm Password' | translate"
+        required
+      />
+      <mat-error *ngIf="invalid('passwordConfirm') && touched('passwordConfirm')">
+        <span translate>Passwords should match</span>
+      </mat-error>
+    </mat-form-field>
+    <mat-slide-toggle color="primary" formControlName="remember" translate>Remember me</mat-slide-toggle>
+    <br />
+    <button mat-raised-button color="primary" type="submit" [disabled]="signupForm?.invalid || isLoading">
+      <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+      <span translate>Login</span>
+    </button>
+  </div>
+</form>

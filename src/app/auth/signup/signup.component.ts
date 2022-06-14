@@ -2,21 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger } from '@app/@core';
-import { UntilDestroy, untilDestroyed } from '@shared';
+import { untilDestroyed } from '@shared';
 import { finalize } from 'rxjs/operators';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
-const log = new Logger('Login');
+const log = new Logger('Signup');
 
-@UntilDestroy()
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   error: string | undefined;
-  loginForm!: UntypedFormGroup;
+  signupForm!: UntypedFormGroup;
   isLoading = false;
 
   constructor(
@@ -30,13 +29,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  invalid(key: string): boolean {
+    return this.signupForm?.get(key)?.invalid ?? false;
+  }
+
+  touched(key: string): boolean {
+    return this.signupForm?.get(key)?.touched ?? false;
+  }
+
   login() {
     this.isLoading = true;
-    const login$ = this.authenticationService.login(this.loginForm.value);
-    login$
+    const signup$ = this.authenticationService.login(this.signupForm.value);
+    signup$
       .pipe(
         finalize(() => {
-          this.loginForm.markAsPristine();
+          this.signupForm.markAsPristine();
           this.isLoading = false;
         }),
         untilDestroyed(this)
@@ -54,9 +61,11 @@ export class LoginComponent implements OnInit {
   }
 
   private createForm() {
-    this.loginForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      passwordConfirm: ['', Validators.required],
       remember: true,
     });
   }

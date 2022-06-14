@@ -1,0 +1,20 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1.5rem" class="mat-typography">
+  <div>
+    <h1 fxLayoutAlign="center" translate>APP_NAME</h1>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="2rem">
+      <app-language-selector></app-language-selector>
+    </div>
+  </div>
+  <div class="login-container" fxLayout="row" fxLayoutAlign="center">
+    <mat-card fxFlex="90%" fxFlex.sm="66%" fxFlex.md="50%" fxFlex.gt-md="33%" class="login-box">
+      <mat-tab-group>
+        <mat-tab label="Login">
+          <ng-template matTabContent><app-login></app-login></ng-template>
+        </mat-tab>
+        <mat-tab label="Sign Up">
+          <ng-template matTabContent><app-signup></app-signup></ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>

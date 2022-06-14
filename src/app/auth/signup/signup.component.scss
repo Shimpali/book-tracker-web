@@ -1,0 +1,17 @@
+@import 'src/theme/theme-variables';
+
+.inline-loader {
+  display: inline-block;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.signup-fields > :not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.signup-error {
+  color: mat-color($app-warn);
+}

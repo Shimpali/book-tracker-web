@@ -7,7 +7,9 @@ import { MaterialModule } from '@material';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared';
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './login.component';
+import { AuthComponent } from './auth.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,6 @@ import { LoginComponent } from './login.component';
     I18nModule,
     AuthRoutingModule,
   ],
-  declarations: [LoginComponent],
+  declarations: [AuthComponent, LoginComponent, SignupComponent],
 })
 export class AuthModule {}
