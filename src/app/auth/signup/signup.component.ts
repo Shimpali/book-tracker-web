@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger } from '@app/@core';
-import { untilDestroyed } from '@shared';
+import { UntilDestroy, untilDestroyed } from '@shared';
 import { finalize } from 'rxjs/operators';
 import { AuthenticationService } from '../authentication.service';
 
 const log = new Logger('Signup');
 
+@UntilDestroy()
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -39,7 +40,7 @@ export class SignupComponent implements OnInit {
 
   login() {
     this.isLoading = true;
-    const signup$ = this.authenticationService.login(this.signupForm.value);
+    const signup$ = this.authenticationService.signup(this.signupForm.value);
     signup$
       .pipe(
         finalize(() => {
