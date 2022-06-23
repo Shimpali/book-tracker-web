@@ -1,0 +1,137 @@
+<div class="board-container" fxLayout="row" fxLayoutAlign="start flex-start" fxLayoutGap="2%" fxFill>
+  <div class="currently-reading-column" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+    <div class="column-header" fxLayout="row" fxLayoutAlign="space-between center">
+      <h4 class="column-title">Currently Reading</h4>
+      <div class="status-count">4</div>
+    </div>
+
+    <div class="books-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+      <mat-card class="mat-elevation-z4 book-card">
+        <mat-card-title-group>
+          <img mat-card-sm-image src="" alt="book-cover" class="card-image" />
+          <mat-card-title class="card-title">
+            <a class="google-book-link" href="#book-ink">book-title</a></mat-card-title
+          >
+          <mat-card-subtitle>
+            <div class="authors">Authors</div>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-actions class="currently-reading-actions">
+          <!-- <p id="slider-label" class="slider-label">Add Progress</p> -->
+          <div class="slider-container">
+            <mat-slider
+              class="progress-slider"
+              [disabled]="disabled"
+              [invert]="invert"
+              [max]="max"
+              [min]="min"
+              [step]="step"
+              [thumbLabel]="thumbLabel"
+              [tickInterval]="getSliderTickInterval()"
+              [(ngModel)]="value"
+              [vertical]="vertical"
+              aria-labelledby="slider-label"
+            >
+            </mat-slider>
+            <div class="max-value">
+              <span class="max-value-label">100</span>
+            </div>
+          </div>
+        </mat-card-actions>
+        <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+  <div class="want-to-read-column" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+    <div class="column-header" fxLayout="row" fxLayoutAlign="space-between center">
+      <h4 class="column-title">Want To Read</h4>
+      <div class="status-count">4</div>
+    </div>
+
+    <div class="books-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+      <mat-card class="mat-elevation-z4 book-card">
+        <mat-card-title-group>
+          <img mat-card-sm-image src="" alt="book-cover" class="card-image" />
+          <mat-card-title class="card-title">
+            <a class="google-book-link" href="#book-ink">book-title</a></mat-card-title
+          >
+          <mat-card-subtitle>
+            <div class="authors">Authors</div>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-actions>
+          <div class="action-buttons">
+            <button mat-button>Currently Reading</button>
+            <button mat-button>Read</button>
+          </div>
+        </mat-card-actions>
+        <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+  <div class="read-column" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+    <div class="column-header" fxLayout="row" fxLayoutAlign="space-between center">
+      <h4 class="column-title">Read</h4>
+      <div class="status-count">4</div>
+    </div>
+
+    <div class="books-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="2%">
+      <mat-card class="mat-elevation-z4 book-card">
+        <mat-card-title-group>
+          <img mat-card-sm-image src="" alt="book-cover" class="card-image" />
+          <mat-card-title class="card-title">
+            <a class="google-book-link" href="#book-ink">book-title</a></mat-card-title
+          >
+          <mat-card-subtitle>
+            <div class="authors">Authors</div>
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<!-- <div
+  cdkDropListGroup
+  class="board-container"
+  fxLayout="row"
+  fxLayoutAlign="start flex-start"
+  fxLayoutGap="2%"
+>
+  <div
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    class="board-columns"
+    (cdkDropListDropped)="dropGrid($event)"
+  >
+    <div
+      cdkDragLockAxis="x"
+      class="board-column"
+      *ngFor="let column of board.columns"
+      cdkDrag
+    >
+      <div class="column-title" cdkDragHandle>
+        {{ column.name }}
+      </div>
+      <div
+        class="tasks-container"
+        id="{{ column.id }}"
+        [cdkDropListConnectedTo]="['21', '32']"
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="task" *ngFor="let item of column.tasks" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
