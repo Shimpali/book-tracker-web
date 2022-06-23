@@ -13,9 +13,12 @@ import {
 } from '@angular/core';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { filter, map, pairwise, throttleTime } from 'rxjs';
+import { filter, map, pairwise, switchMap, throttleTime } from 'rxjs';
 
-import { GoogleBook } from '@app/@core/models/google-book';
+import { statusLabels } from '@core/constants';
+import { Status } from '@core/enums';
+import { Book, GoogleBook } from '@core/models';
+import { BooksService } from '../../services';
 
 @UntilDestroy()
 @Component({
@@ -29,8 +32,10 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
   @Input() books: GoogleBook[] = [];
   @Output() loadNextBatch: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() isLoading = false;
+  Status = Status;
+  statusLabels = statusLabels;
 
-  constructor(private scrollDispatcher: ScrollDispatcher, private ngZone: NgZone) {}
+  constructor(private scrollDispatcher: ScrollDispatcher, private ngZone: NgZone, private booksService: BooksService) {}
 
   ngOnInit() {}
 
@@ -54,5 +59,12 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
           this.loadNextBatch.emit(true);
         });
       });
+  }
+
+  addBookToShelf(book: GoogleBook, status: Status): void {
+    this.booksService
+      .getGoogleBookData(book)
+      .pipe(switchMap((bookData: Partial<Book>) => this.booksService.save({ ...bookData, status } as Book)))
+      .subscribe((data) => console.log(data));
   }
 }

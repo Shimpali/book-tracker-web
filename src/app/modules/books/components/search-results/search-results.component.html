@@ -28,7 +28,7 @@
             mat-icon-button
             [matMenuTriggerFor]="itemMenu"
             [matMenuTriggerData]="{
-              link: book.volumeInfo.infoLink || book?.accessInfo?.webReaderLink
+             book
             }"
           >
             <mat-icon> more_vert </mat-icon>
@@ -44,17 +44,20 @@
 </div>
 
 <mat-menu #itemMenu="matMenu" class="actions-menu">
-  <ng-template matMenuContent let-link="link">
+  <ng-template matMenuContent let-book="book">
     <button mat-menu-item class="menu-item">
-      <a [href]="link" target="_blank" class="book-link"> View </a>
+      <a [href]="book?.volumeInfo?.infoLink || book?.accessInfo?.webReaderLink" target="_blank" class="book-link">
+        View
+      </a>
     </button>
+    <mat-divider class="menu-item"></mat-divider>
+    <ng-container *ngFor="let status of Status | enumToArray; let i = index; ngForTrackByProperty">
+      <button mat-menu-item class="menu-item" (click)="addBookToShelf(book, status?.value)">
+        {{ statusLabels[status?.value] }}
+      </button>
+      <mat-divider class="menu-item"></mat-divider
+    ></ng-container>
   </ng-template>
-  <mat-divider class="menu-item"></mat-divider>
-  <button mat-menu-item class="menu-item">Want To Read</button>
-  <mat-divider class="menu-item"></mat-divider>
-  <button mat-menu-item class="menu-item">Currently Reading</button>
-  <mat-divider class="menu-item"></mat-divider>
-  <button mat-menu-item class="menu-item">Read</button>
 </mat-menu>
 
 <ng-template #emptyScreen>

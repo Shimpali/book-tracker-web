@@ -5,7 +5,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { debounceTime, finalize } from 'rxjs/operators';
 
 import { GoogleBook } from '@core/models';
-import { BooksService, GoogleBooksService } from './services';
+import { GoogleBooksService } from './services';
 
 @UntilDestroy()
 @Component({
@@ -23,7 +23,7 @@ export class BooksComponent implements OnInit {
   };
   isLoading = false;
 
-  constructor(private googleBooksService: GoogleBooksService, private booksService: BooksService) {}
+  constructor(private googleBooksService: GoogleBooksService) {}
 
   ngOnInit(): void {
     this.search.valueChanges.pipe(debounceTime(500)).subscribe((value) => {

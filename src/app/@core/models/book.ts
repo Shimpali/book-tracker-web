@@ -14,8 +14,6 @@ export interface Book {
   categories: string[];
   averageRating: number;
   volumeId: string;
-  wantToRead: boolean;
-  currentlyReading: boolean;
-  read: boolean;
+  status: string;
   progress: Progress;
 }
