@@ -6,10 +6,8 @@ import { SharedModule } from '@shared';
 import { BooksRoutingModule } from './books-routing.module';
 
 // Components
-
 import { BooksComponent } from './books.component';
-import { SearchInputComponent } from './search-input/search-input.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchInputComponent, SearchResultsComponent } from './components';
 
 @NgModule({
   imports: [SharedModule, ScrollingModule, BooksRoutingModule],
